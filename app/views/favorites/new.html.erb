@@ -1,12 +1,12 @@
 <!-- Validation failure messages -->
 
 <% if @favorite.errors.any? %>
-  <% @favorite.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
+<% @favorite.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
 <% end %>
 
 <!-- Responsive panel example -->
@@ -21,16 +21,6 @@
         <form action="/create_favorite" method="post" class="form-horizontal">
           <!-- Hidden input for authenticity token to protect from forgery -->
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-
-          <!-- Label and input for user_id -->
-          <div class="form-group">
-            <label for="user_id" class="col-sm-2 control-label">
-              User
-            </label>
-            <div class="col-sm-10">
-              <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :username, @favorite.user_id), :class => "form-control") %>
-            </div>
-          </div>
 
           <!-- Label and input for dish_id -->
           <div class="form-group">
